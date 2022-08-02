@@ -8,6 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Docker Compose 
-        run: docker-compose up --build -d
+        run: |
+             cd super-app
+             docker-compose up --build -d
       - name: Echo Done
         run: echo Done!
