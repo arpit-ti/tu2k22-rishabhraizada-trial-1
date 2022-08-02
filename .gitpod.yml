@@ -5,7 +5,9 @@ tasks:
       gp sync-done bundle
     command: docker-compose logs -f server-1
   - init: gp sync-await bundle
-    command: docker-compose logs -f server-2  
+    command: |
+      cd super-app
+      docker-compose logs -f server-2  
     openMode: split-right
   - init: gp sync-await bundle
     command: >
