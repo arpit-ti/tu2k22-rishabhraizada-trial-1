@@ -1,5 +1,6 @@
 tasks:
   - init: |
+      cd super-app
       docker-compose up --build -d
       gp sync-done bundle
     command: docker-compose logs -f server-1
