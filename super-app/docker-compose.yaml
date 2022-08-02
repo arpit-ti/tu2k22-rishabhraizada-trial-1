@@ -1,0 +1,13 @@
+services:
+  server-1:
+    build: ./app-1
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app-1:/app-1
+  server-2:
+    build: ./app-2
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./app-2:/app-2
