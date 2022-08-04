@@ -1,0 +1,15 @@
+name: validate-docker-build
+
+on: [push]
+
+jobs:
+  docker-compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Docker Compose 
+        run: |
+             cd super-app
+             docker-compose up --build -d
+      - name: Echo Done
+        run: echo Done!

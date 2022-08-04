@@ -1,0 +1,30 @@
+tasks:
+  - init: |
+      cd super-app
+      docker-compose up --build -d
+      gp sync-done bundle
+    command: docker-compose logs -f server-1
+  - init: gp sync-await bundle
+    command: |
+      cd super-app
+      docker-compose logs -f server-2  
+    openMode: split-right
+  - init: gp sync-await bundle
+    command: |
+      gp ports await 8080
+      curl -XPOST localhost:8080/sum -d '{"a": 12, "b": 10}'
+    openMode: split-right
+    
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - name: server-1
+    port: 8080
+    onOpen: ignore
+  - name: server-2
+    port: 8081
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
+    - ms-python.python
