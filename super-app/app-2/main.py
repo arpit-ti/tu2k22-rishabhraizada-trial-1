@@ -14,4 +14,8 @@ async def root(name: str = "Rishabh"):
 @app.post("/sum")
 async def root(request: Request):
     req = await request.json()
-    return {"sum":req["a"] + req["b"]}
+    try:
+        return {"sum":req["a"] + req["b"]}
+    except: 
+        return {"error": "please provide integer values a and b"}
+    

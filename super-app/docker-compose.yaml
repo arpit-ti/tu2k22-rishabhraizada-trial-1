@@ -1,12 +1,16 @@
 services:
   server-1:
-    build: ./app-1
+    build: .
+    working_dir: /app-1
+    command: uvicorn main:app --host 0.0.0.0 --port 8080 --reload
     ports:
       - "8080:8080"
     volumes:
       - ./app-1:/app-1
   server-2:
-    build: ./app-2
+    build: .
+    working_dir: /app-2
+    command: uvicorn main:app --host 0.0.0.0 --port 8081 --reload
     # ports:
     #   - "8081:8081"
     volumes:
