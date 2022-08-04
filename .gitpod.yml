@@ -10,7 +10,8 @@ tasks:
       docker-compose logs -f server-2  
     openMode: split-right
   - init: gp sync-await bundle
-    command: >
+    command: |
+      gp ports await 8080
       curl -XPOST localhost:8080/sum -d '{"a": 12, "b": 10}'
     openMode: split-right
     
